@@ -49,7 +49,7 @@ var CommentList = React.createClass({
   render: function() {
     var commentNodes = this.props.data.map(function (comment) {
       return (
-        <Comment author={comment.author}>
+        <Comment author={comment.author} timestamp={comment.timestamp}>
           {comment.text}
         </Comment>
       );
@@ -113,12 +113,18 @@ var CommentForm = React.createClass({
 var Comment = React.createClass({
   render: function() {
     return (
-      <div className="comment">
-        <h2 className="commentAuthor">
-          {this.props.timestamp}
-          {this.props.author}
-        </h2>
-        {this.props.children}
+      <div className='row authors'>
+        <div className='large-8 columns large-centered'>
+          <div className="comment">
+            <h2 className="commentAuthor">
+              {this.props.author}
+            </h2>
+            <h6 className='subheader'>
+              {this.props.timestamp}
+            </h6>
+            {this.props.children}
+          </div>
+        </div>
       </div>
     );
   }
